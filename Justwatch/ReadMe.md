@@ -1,4 +1,4 @@
-This project revolved around scraping information about all the content providers and the content titles in the US using the website **justwatch.com**. It was completed in 2 parts
+This project revolved around scraping information about all the content providers and the content titles in the US using the website **www.justwatch.com/us**. It was completed in 2 parts
 
  - First, all the information was extracted from json data available on the home page itself
  - Next, each individual title was opened using the url to get more detailed information (more work pending)
