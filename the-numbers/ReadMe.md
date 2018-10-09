@@ -1,0 +1,1 @@
+For an online ticketing services clients, we needed to forecast the ticket sales for upcoming movies. This web scraping task was done to get historical information on box office and number of theatres (daily)
