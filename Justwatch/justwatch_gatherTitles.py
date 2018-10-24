@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 import re
 
 
-path = 'C:/User/JW'
+path = 'C:/user/temp'
 if not os.path.exists(path + '/' + strftime("%m.%d.%Y") + '/'):
 	os.makedirs(path + '/' + strftime("%m.%d.%Y") + '/')
 filepath = path + '/' + strftime("%m.%d.%Y") + '/'
@@ -199,7 +199,7 @@ f3.close()
 #
 ################################
 
-#filepath = 'C:/User/JW/09.28.2018/'
+#filepath = 'S:/Analytics Clients/OTT Content Repo/'
 
 
 from selenium import webdriver
@@ -226,8 +226,8 @@ driver = webdriver.Chrome('chromedriver',desired_capabilities=dcap,service_args=
 
 url_base = 'https://www.justwatch.com'
 
-url_list = open(filepath + 'JW_urls.txt', 'r')
-info = open(filepath + 'JW_ratings.txt', 'a')
+url_list = open('JW_urls.txt', 'r')
+info = open('JW_ratings.txt', 'a')
 info.write('url_base_key' + '|' + 'JW_Rating' + '|' + 'IMDB_Score' + '|' + 'TomatoMeter' + '\n') 
 
 for urls in url_list:
@@ -236,19 +236,10 @@ for urls in url_list:
     time.sleep(0.5)
     print('Getting info for: ' + pageurl)
     
-    try:
-        jw = driver.find_elements_by_xpath('//*[contains(@id,"justwatch_rating")]')
-    except:
-        jw = []
-    try:
-        tm = driver.find_elements_by_xpath('//*[contains(@id,"tomato_meter")]')
-    except:
-        tm = []
-    try:
-        im = driver.find_elements_by_xpath('//*[contains(@id,"imdb_score")]')
-    except:
-        im = []
-
+    jw = driver.find_elements_by_xpath('//*[contains(@id,"justwatch_rating")]')
+    tm = driver.find_elements_by_xpath('//*[contains(@id,"tomato_meter")]')
+    im = driver.find_elements_by_xpath('//*[contains(@id,"imdb_score")]')
+    
     info.write(urls.strip() + '|')
     if jw != []: 
         info.write(jw[1].text + '|')
@@ -270,9 +261,4 @@ url_list.close()
 
 
 print('End: ' + strftime('%b %d, %Y %H:%M'))   
-
-driver.close()
-
-
-
 
